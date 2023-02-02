@@ -11,7 +11,7 @@ export class GetExerciseRequest extends BaseRequest<WgerResponse<ExerciseResult>
 		accept: 'application/json'
 	}
 	private muscleId: number|null
-	protected responseResultsKey = 'results'
+	protected responseDataKey = 'results'
 
 	constructor(muscleId: number|null = null) {
 		super()

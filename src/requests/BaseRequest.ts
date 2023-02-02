@@ -8,7 +8,7 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 	protected headers: object|null = null
 	protected params: object|null = null
 	protected data: object|null = null
-	protected responseResultsKey: string|null = null
+	protected responseDataKey: string|null = null
 
 	public async send(): Promise<ResultType[]> {
 		let results = []
@@ -33,7 +33,7 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 	}
 
 	protected mergeResults(results: ResponseType[], response: AxiosResponse<ResponseType>): ResponseType[] {
-		const resultData = response.data[this.responseResultsKey] ?? response.data
+		const resultData = response.data[this.responseDataKey] ?? response.data
 		if (Array.isArray(resultData)) {
 			return [...results, ...resultData]
 		}

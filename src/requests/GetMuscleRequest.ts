@@ -9,6 +9,6 @@ export class GetMuscleRequest extends BaseRequest<WgerResponse<MuscleResult>, Mu
 	public headers = {
 		accept: 'application/json'
 	}
-	protected responseResultsKey = 'results'
+	protected responseDataKey = 'results'
 
 }
