@@ -11,7 +11,7 @@ Docker:
 - docker exec -it rh-test sh
 
 Local:
-- npm build
+- npm run build
 - node ./dist/index.js --muscle *insert muscle group*
 
 Tests:
