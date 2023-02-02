@@ -42,7 +42,7 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 	}
 
 	protected stripDuplicateQueryParameters(url: string): string {
-		const urlQuerySplit = url.split("?")
+		const urlQuerySplit = url.split('?')
 		if (urlQuerySplit.length < 2) {
 			return url
 		}
