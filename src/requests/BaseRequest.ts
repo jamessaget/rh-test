@@ -5,9 +5,9 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 
 	abstract url: string
 	abstract method: HttpMethods
-	protected headers: object|null = null
-	protected params: object|null = null
-	protected data: object|null = null
+	protected headers: Record<string, string|string[]|number|boolean|null>|null = null
+	protected params: Record<string, string|number>|null = null
+	protected data: any|null = null
 	protected responseDataKey: string|null = null
 
 	public async send(): Promise<ResultType[]> {
@@ -49,15 +49,15 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 		return response.data['next'] ?? null
 	}
 
-	protected getQueryParameters(): object|null {
+	protected getQueryParameters(): Record<string, string|number> | null {
 		return this.params
 	}
 
-	protected getHeaders(): object|null {
+	protected getHeaders(): Record<string, string|string[]|number|boolean|null> | null {
 		return this.headers
 	}
 
-	protected getData(): object|null {
+	protected getData(): any|null {
 		return this.data
 	}
 }

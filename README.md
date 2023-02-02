@@ -29,7 +29,7 @@ There is a github pipeline set up to lint and run tests on pushing to the main b
 
 ## Extras
 
-If I had more time it would be nice to handle translations, logging, sanitizing user input
+If I had more time it would be nice to handle translations, logging, more edge cases, sanitizing user input
 
 ## Design considerations
 
