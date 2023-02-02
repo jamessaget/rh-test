@@ -14,6 +14,7 @@
     "target": "ES5",
     "outDir": "dist",
     "baseUrl": ".",
+    "downlevelIteration": true,
     "paths": {
       "@root/*": ["src/*"]
     },

@@ -6,7 +6,7 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 	abstract url: string
 	abstract method: HttpMethods
 	protected headers: Record<string, string|string[]|number|boolean|null>|null = null
-	protected params: Record<string, string|number>|null = null
+	protected params: Record<string, string>|null = null
 	protected data: any|null = null
 	protected responseDataKey: string|null = null
 
@@ -16,7 +16,7 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 		let url = this.url
 		do {
 			response = await axios<ResponseType>({
-				url: url,
+				url: this.stripDuplicateQueryParameters(url),
 				method: this.method,
 				headers: this.getHeaders(),
 				params: this.getQueryParameters(),
@@ -41,6 +41,19 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 		return results
 	}
 
+	protected stripDuplicateQueryParameters(url: string): string {
+		const urlQuerySplit = url.split("?")
+		if (urlQuerySplit.length < 2) {
+			return url
+		}
+		const queryStringArray = urlQuerySplit[1].split('&')
+		const existingQueryParameters = new URLSearchParams(this.getQueryParameters()).toString().split('&')
+		const uniqueQueryStringParameters = [...new Set(queryStringArray)].filter((queryStringParameter) => {
+			return !existingQueryParameters.includes(queryStringParameter)
+		}).join('&')
+		return urlQuerySplit[0] + '?' + uniqueQueryStringParameters
+	}
+
 	protected paginationCondition(response: AxiosResponse<ResponseType>): boolean {
 		return !!response.data['next']
 	}
@@ -49,7 +62,7 @@ export abstract class BaseRequest<ResponseType, ResultType> {
 		return response.data['next'] ?? null
 	}
 
-	protected getQueryParameters(): Record<string, string|number> | null {
+	protected getQueryParameters(): Record<string, string> | null {
 		return this.params
 	}
 
