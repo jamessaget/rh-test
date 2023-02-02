@@ -34,3 +34,4 @@ If I had more time it would be nice to handle translations, logging, sanitizing 
 ## Design considerations
 
 Make a thin IIFE function to be trigger via the command line, with an easily extendable request pattern for http requests
+
