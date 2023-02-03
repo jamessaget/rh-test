@@ -21,7 +21,7 @@ export class GetExerciseRequest extends BaseRequest<WgerResponse<ExerciseResult>
 	protected getQueryParameters() {
 		const queryParameters = {}
 		if (this.muscleId) {
-			queryParameters['muscle'] = this.muscleId
+			queryParameters['muscles'] = this.muscleId
 		}
 		return queryParameters
 	}
