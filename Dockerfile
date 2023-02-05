@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 COPY tsconfig.json ./
+COPY jest.config.ts ./
+COPY .eslintrc.js ./
 COPY src /app/src
 
 RUN npm install

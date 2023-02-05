@@ -7,7 +7,7 @@ To run locally there are two options, through docker or locally through your ter
 
 Docker:
 - docker build -t *insert-image-tag* .
-- docker run --name *insert-image-name* -p 9876:8080 -d -v "$(pwd)"/src:/app/src -v "$(pwd)"/tests:/app/tests  *insert-container-name* 
+- docker run --name *insert-image-name* -p 9876:8080 -d -v "$(pwd)"/src:/app/src -v "$(pwd)"/dist:/app/dist -v "$(pwd)"/tests:/app/tests  *insert-container-name* 
 - docker exec -it rh-test sh
 
 Local:
